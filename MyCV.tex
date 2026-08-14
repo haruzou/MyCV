@@ -1,4 +1,5 @@
-\documentclass[11pt,letterpaper]{article}
+\documentclass[letterpaper,11pt]{article}
+
 \usepackage{latexsym}
 \usepackage[empty]{fullpage}
 \usepackage{titlesec}
@@ -6,25 +7,24 @@
 \usepackage[usenames,dvipsnames]{color}
 \usepackage{verbatim}
 \usepackage{enumitem}
-\usepackage[pdftex]{hyperref}
+\usepackage[hidelinks]{hyperref}
 \usepackage{fancyhdr}
 \usepackage[english]{babel}
 \usepackage{tabularx}
-\usepackage{charter}
 \usepackage{fontawesome5}
+\usepackage{charter}
 \input{glyphtounicode}
+
 
 \pagestyle{fancy}
 \fancyhf{} % clear all header and footer fields
 \fancyfoot{}
-\fancyfoot[L]{\small{\textit{Updated: July 23, 2026}}}          % Left footer: "Updated: <date>"
-\fancyfoot[R]{\small{Page \thepage\ of 2}}                      % Right footer: "Page X of Y"
+\fancyfoot[L]{\small{\textit{Updated: Aug 14, 2026}}}          % Left footer: "Updated: <date>"
+\fancyfoot[R]{\small{Page \thepage\ of 1}}                      % Right footer: "Page X of Y"
 \renewcommand{\headrulewidth}{0pt}
 \renewcommand{\footrulewidth}{0pt}
 
-% ==========================================
-% ADJUST MARGINS
-% ==========================================
+% Adjust margins
 \addtolength{\oddsidemargin}{-0.25in}  % Thu hẹp lề trái (giữ lề lùi vào vừa phải)
 \addtolength{\evensidemargin}{-0.25in}
 \addtolength{\textwidth}{0.5in}       % Giới hạn chiều rộng văn bản cân đối
@@ -38,167 +38,147 @@
 \raggedright
 \setlength{\tabcolsep}{0in}
 
-\linespread{1.04}
-
 % Sections formatting
 \titleformat{\section}{
-  \vspace{-6pt}\bfseries\raggedright\large
+  \vspace{-6pt}\bfseries\scshape\raggedright\large
 }{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
 
-% Ensure that generated PDF is machine readable/ATS parsable
+% Ensure that generate pdf is machine readable/ATS parsable
 \pdfgentounicode=1
 
 %-------------------------
 % Custom commands
-
-\newcommand{\SH}[4]{ %SubHeading
-  \vspace{-1pt}\item[]
+\newcommand{\SH}[4]{
+  \vspace{-2pt}\item
     \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
-      \small \textbf{#1} & \small #2 \\
-      $\bullet$ \small #3 & \small #4 \\
-    \end{tabular*}\vspace{-4pt}
+      \small #1 & \small #2 \\
+      \small #3 & \small #4 \\
+    \end{tabular*}\vspace{-7pt}
 }
 
-\newcommand{\SHExt}[5]{ %SubHeading Extend
-  \vspace{-1pt}\item[]
+\newcommand{\SHExt}[5]{
+  \vspace{-2pt}\item
     \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
-      \small \textbf{#1} & \small #2 \\
-      $\bullet$ \small #3 & \small #4 \\
-      $\bullet$ \small #5 \\
-    \end{tabular*}\vspace{-4pt}
+      \small #1 & \small #2 \\
+      \small #3 & \small #4 \\
+      \small #5\\
+    \end{tabular*}\vspace{-7pt}
 }
 
-\newcommand{\SHExp}[3]{ %SubHeadingExp
-  \vspace{-1pt}\item[]
-    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
-       \small #1 & \small #2 \\
-       \small #3 \\
-    \end{tabular*}\vspace{-2pt}
-}
-\newcommand{\rItem}[2]{ %resumeItem
-  \item[]\small{
-    \textbf{#1}{: #2 \vspace{2pt}}
-  }
+\newcommand{\SSH}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \textit{\small#1} & \textit{\small #2} \\
+    \end{tabular*}\vspace{-7pt}
 }
 
-\newcommand{\rIItem}[2]{ %resumeItem
+\newcommand{\PrjH}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \small #1 & \small #2 \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\rItem}[1]{
   \item\small{
-    \textbf{#1}{: #2 \vspace{2pt}}
+    {#1 \vspace{-2pt}}
   }
 }
-%\newcommand{\SSH}[2]{ %Subsubheading
-%    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
-%      \textit{\small #1} & \textit{\small #2} \\
-%    \end{tabular*}\vspace{-5pt}
-%}
-%\newcommand{\rItemPlain}[1]{
-%  \item\small{
-%    {#1 \vspace{-2pt}}
-%  }
-%}
-\newcommand{\rSubItem}[2]{\rItem{#1}{#2}\vspace{-4pt}}
 
-\renewcommand{\labelitemii}{$\circ$}
+\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
 
-\newcommand{\SHLStart}{\begin{itemize}[leftmargin=*,topsep=1pt,itemsep=2.5pt,parsep=0pt,partopsep=0pt]}
-\newcommand{\SHLEnd}{\end{itemize}\vspace{-3pt}}
-\newcommand{\ItemListStart}{\begin{itemize}[leftmargin=1em, label=$\bullet$,topsep=2pt,itemsep=1.5pt,parsep=0pt]}
-\newcommand{\ItemListEnd}{\end{itemize}\vspace{-2pt}}
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
 
+\newcommand{\SHLStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\SHLEnd}{\end{itemize}}
+\newcommand{\ItemListStart}{\begin{itemize}}
+\newcommand{\ItemListEnd}{\end{itemize}\vspace{-5pt}}
+\newcommand{\ExpItemListStart}{\begin{itemize}[leftmargin=1em, label=$\bullet$]}
+\newcommand{\ExpItemListEnd}{\end{itemize}\vspace{-5pt}}
 %-------------------------------------------
-%%%%%%  CV STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%  RESUME STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 
 \begin{document}
-%----------HEADING-----------------
+
+%----------HEADING----------
 \begin{center}
-    {\Huge \textbf{Hong-Vinh Vu}}\\[4pt]
+    \textbf{\Huge Hong-Vinh Vu} \\ \vspace{4pt}
     \small \faEnvelope\ yuvinh11@gmail.com $\;|\;$
     \small \faGlobe\ \href{https://vuvinh.vercel.app/}{vuvinh.vercel.app} \\
     \small \faLinkedin\ \href{http://www.linkedin.com/in/vuvinh}{vuvinh} $\;|\;$
     \small \faGithub\ \href{https://github.com/haruzou}{haruzou} $\;|\;$
     \small \faFacebook\ \href{https://www.facebook.com/yuvinh11/}{Vu Vinh}
 \end{center}
-\vspace{-14pt}
+
 %-----------ABOUT---------------------
-\section{\textbf{About}}
+\section{About}
 \SHLStart
-\item[]
-\begin{minipage}[t]{0.97\textwidth}
-\small Control and Automation Engineering undergraduate at HUST with research experience in intelligent control (Fuzzy Logic, Neural Networks) and dynamic optimization (MPC, Reinforcement Learning). Driven to specialize in Reinforcement Learning and optimal control for complex autonomous systems and robotics.
-\end{minipage}
+\rItem{Control and Automation Engineering undergraduate at HUST with research experience in intelligent control (Fuzzy Logic, Neural Networks) and dynamic optimization (MPC, Reinforcement Learning). Driven to specialize in Reinforcement Learning and optimal control for complex autonomous systems and robotics.}
 \SHLEnd
 
 %-----------EDUCATION-----------------
-\section{\textbf{Education}}
+
+%-----------EDUCATION-----------
+\section{Education}
   \SHLStart
     \SH
-      {Hanoi University of Science and Technology (HUST)}{Sep 2024 -- Present}
-      {B.Sc. in Control and Automation Engineering.}{\textbf{GPA: 3.45 / 4.0}}
+     {\textbf{Hanoi University of Science and Technology (HUST)}}{Sep 2024 -- Present}
+      {$\bullet$ B.Sc. in Control and Automation Engineering.}{\textbf{GPA: 3.45 / 4.0}}
     \SHExt
-      {Le Quy Don High School for the Gifted}{Aug 2021 – May 2024}
-      {Specialized Physics Program.}{}
-      {Won the Second Prize, Provincial Physics Olympiad.}
+      {\textbf{Le Quy Don High School for the Gifted}}{Aug 2021 – May 2024}
+      {$\bullet$ Specialized Physics Program.}{}
+      {$\bullet$ Won the Second Prize, Provincial Physics Olympiad.}
   \SHLEnd
 
-%-----------EXPERIENCE-----------------
-\section{\textbf{Experiences}}
+
+%-----------EXPERIENCE-----------
+\section{Experiences}
   \SHLStart
-    \SHExp
-      {\textbf{Research Assistant,}}{Mar 2026 -- Present}
-      {Multi-Agent System Control (MASC) Research Laboratory, SEEE, HUST.}
-      
-      \ItemListStart
-      \rIItem{Supervisor}{Assoc.Prof. Hoai Nam Nguyen}
-      \rIItem{Research topic}
-          {Applied Optimal Control Algorithms and Intelligent Control Algorithms to optimize trajectory tracking for Quadrotors.}
-      \rIItem{Key Contribution}
-          {Developed a hybrid flight control framework by integrating PyTorch-based Deep Reinforcement Learning (DRL) for high-level dynamic trajectory planning with Model Predictive Control (MPC) and ANFIS for optimal trajectory tracking and nonlinear disturbance compensation.}
-      \ItemListEnd
+    \SH
+      {\textbf{Research Assistant},}{Mar 2026 -- Present}
+      {Multi-Agent System Control (MASC) Research Laboratory, SEEE, HUST.}{}
+      \ExpItemListStart
+        \rItem{\textbf{Supervisor}: Assoc.Prof. Hoai Nam Nguyen}
+        \rItem{\textbf{Research topic}: Applied Optimal Control Algorithms and Intelligent Control Algorithms to optimize trajectory tracking for Quadrotors.}
+        \rItem{\textbf{Key Contribution}: Developed a hybrid flight control framework by integrating PyTorch-based Deep Reinforcement Learning (DRL) for high-level dynamic trajectory planning with Model Predictive Control (MPC) and ANFIS for optimal trajectory tracking and nonlinear disturbance compensation.}
+      \ExpItemListEnd
 
-    \vspace{1pt}
-
-    \SHExp
+    \SH
       {\textbf{Research Assistant}, Mechatronics Engineering Group (MEG),}{Jul 2025 -- Mar 2026}
-      {Motion Control and Applied Robotics Laboratory (MoCAR LAB), SEEE, HUST.}
-      
-      \ItemListStart
-        \rIItem{Supervisor}{Assoc.Prof. Danh Huy Nguyen}
-        \rIItem{Research topic}
-          {Kinematic Modeling and Control of a 6WD-6WS Mobile Robot based on ROS2.}
-        \rIItem{Key Contribution}
-          {Developed mathematical kinematic/dynamic models and motion control algorithms for a 6WD-6WS (6-Wheel Drive, 6-Wheel Steering) omnidirectional vehicle, implementing custom ROS2 navigation nodes, Gazebo physics simulations, and embedded MCU firmware for real-time trajectory tracking and multi-mode steering coordination.}
-      \ItemListEnd
+      {Motion Control and Applied Robotics Laboratory (MoCAR LAB), SEEE, HUST.}{}
+      \ExpItemListStart
+        \rItem{\textbf{Supervisor}: Assoc.Prof. Danh Huy Nguyen}
+        \rItem{\textbf{Research topic}: Kinematic Modeling and Control of a 6WD-6WS Mobile Robot based on ROS2.}
+        \rItem{\textbf{Key Contribution}: Developed mathematical kinematic/dynamic models and motion control algorithms for a 6WD-6WS (6-Wheel Drive, 6-Wheel Steering) omnidirectional vehicle, implementing custom ROS2 navigation nodes, Gazebo physics simulations, and embedded MCU firmware for real-time trajectory tracking and multi-mode steering coordination.}
+     \ExpItemListEnd
+
   \SHLEnd
-  
-%-----------PROJECTS-----------------
-\section{\textbf{Projects}}
+
+
+%-----------PROJECTS-----------
+\section{Projects}
   \SHLStart
-    \rItem{PID Controller for Quadrotor}
-      {Designed and tuned a discrete PID controller in MATLAB/Simulink for 6-DOF Quadrotor position and attitude stabilization.}
-    \rItem{Fuzzy-PD Controller for Quadrotor}
-      {Developed a Self-Tuning Fuzzy-PD controller that dynamically adjusts $K_p$ and $K_d$ gains based on real-time tracking errors, significantly improving dynamic response and overshoot reduction.}
-    \rItem{Direct Adaptive Fuzzy Controller for Quadrotor}
-      {Implemented a Direct Adaptive Fuzzy Control (DAFC) scheme using Lyapunov stability theory to approximate unmodeled dynamics and external disturbances, achieving robust trajectory tracking with minimal steady-state error.}
+    \rItem{\textbf{PID Controller for Quadrotor}:
+      Designed and tuned a discrete PID controller in MATLAB/Simulink for 6-DOF Quadrotor position and attitude stabilization.}
+    \rItem{\textbf{Fuzzy-PD Controller for Quadrotor}:
+      Developed a Self-Tuning Fuzzy-PD controller that dynamically adjusts $K_p$ and $K_d$ gains based on real-time tracking errors, significantly improving dynamic response and overshoot reduction.}
+    \rItem{\textbf{Direct Adaptive Fuzzy Controller for Quadrotor}:
+      Implemented a Direct Adaptive Fuzzy Control (DAFC) scheme using Lyapunov stability theory to approximate unmodeled dynamics and external disturbances, achieving robust trajectory tracking with minimal steady-state error.}
   \SHLEnd
 
-%--------HONORS & AWARDS------------
-\section{\textbf{Honors \& Awards}}
+%
+%-----------PROGRAMMING SKILLS-----------
+\section{Skills}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+     \textbf{Languages}{: Python, C, C++, MATLAB/Simulink.} \\
+     \textbf{DL/Optimization}{: PyTorch.} \\
+     \textbf{Robotics Developments}{: ROS2 framework, Gazebo, SLAM.} \\
+     \textbf{Tools}{: LaTeX, STM32CubeIDE.}
+    }}
+ \end{itemize}
 
- \SHLStart
-   \SHExp
-   {\textbf{Academic Achievement Scholarship, Grade: Excellent.}}{Apr 2025}
-   {This is a prestigious award given to students with the highest scores in the entire department ($\approx 3\%$)}{}
- \SHLEnd
-
-%--------SKILLS------------
-\section{\textbf{Skills}}
-
-\SHLStart
-  \rItem{Programming Languages}{Python, C, C++, MATLAB/Simulink.}
-  \rItem{Optimization}{PyTorch.}
-  \rItem{Tools}{LaTeX, STM32CubeIDE.}
-  \rItem{Robotics}{ROS2 framework, Gazebo, SLAM.}
-\SHLEnd
 
 %-------------------------------------------
 \end{document}
